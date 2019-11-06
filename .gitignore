@@ -1,0 +1,8 @@
+node_modules/
+out/
+coverage/
+stryker.log
+*.DS_Store
+dist/
+log/
+src/config.json
