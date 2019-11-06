@@ -1,4 +1,10 @@
 {
   "dateFormat": "YYYY-MM-DD",
-  "logFolder":"log"
+  "logFolder":"log",
+  "plugins": {
+    "weather": {
+      "active": true,
+      "location": "Munich"
+    }
+  }
 }

@@ -2,19 +2,30 @@ import moment = require('moment')
 import program = require('commander')
 import * as config from './config.json'
 import Manager from './lib/manager.js'
+import Weather from './lib/plugins/weather.js'
 
-let manager = new Manager(config.logFolder)
 
-// TODO: Plugins: Weather, TodoTXT, Nagios, Mails, OTRS, GoogleMail, OutlookCal, GoogleCAL
+let manager = new Manager(config.logFolder, moment().format(config.dateFormat))
+
+let weather = new Weather(config.plugins.weather, manager)
+
+// TODO: Plugins: Weather, TodoTXT, Nagios, Mails, OTRS, GoogleMail, OutlookCal, GoogleCAL, godville, ...
 
 program
   .command('start')
   .alias('s')
   .description('Start a Day')
   .action(function () {
-    console.log('Start Day for ' + moment().format(config.dateFormat))
     try {
-      manager.addDay(moment().format(config.dateFormat))
+      // tslint:disable-next-line: no-floating-promises
+      manager.startDay()
+
+      weather.startDay()
+
+
+
+      // TODO: let plugins work, end with headline for manual entries
+
     } catch (error) {
       console.error(error)
     }
