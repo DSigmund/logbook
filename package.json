@@ -24,7 +24,7 @@
   "license": "Unlicense",
   "dependencies": {
     "commander": "^4.0.0",
-    "moment": "^2.24.0"
+    "moment": "^2.29.4"
   },
   "devDependencies": {
     "@stryker-mutator/core": "^2.0.2",
